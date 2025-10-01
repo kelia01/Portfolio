@@ -158,7 +158,7 @@ const App = () => {
                     <h4 className="font-semibold text-green-200 text-xl mb-2">
                       {Title}
                     </h4>
-                    <p className="text-lg leading-relaxed mb-2">
+                    <p className="text-[16px] leading-relaxed mb-2">
                       {description}
                     </p>
                     <div className="flex gap-1.5">
@@ -187,14 +187,11 @@ const App = () => {
                     <h3 className="font-semibold text-green-200 text-xl mb-2">
                       {title}
                     </h3>
-                    <p className="mb-3">{description}</p>
-                    <div>
-                      {techstack.map((tech, idx) => (
-                        <div
-                          key={idx}
-                          className="rounded-xl px-1 py-1.5 bg-amber-100"
-                        >
-                          <p className="text-amber-300 text-sm">{tech}</p>
+                    <p className="text-[16px] leading-relaxed mb-2 text-green-100">{description}</p>
+                    <div className="flex gap-1.5">
+                      {techstack.map((tech, i) => (
+                        <div key={i} className="rounded-xl p-1 bg-amber-100">
+                          <p className="text-amber-300">{tech}</p>
                         </div>
                       ))}
                     </div>
