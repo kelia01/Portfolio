@@ -1,4 +1,5 @@
 import { FaDiscord, FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
+import CursorLight from "./components/CursorLight";
 
 const App = () => {
   const socialIcons = [
@@ -91,9 +92,10 @@ const App = () => {
   ];
 
   return (
-    <div className="font-[sans-serif] relative bg-[#37055a] flex items-center justify-center">
+    <div className=" font-[sans-serif] relative bg-[#37055a] flex items-center justify-center">
+      <CursorLight />
       <div className="flex p-10 w-full">
-        <div className="flex flex-col gap-10 w-full">
+        <div className="flex flex-col gap-10 w-full lg:sticky lg:top-0 lg:h-screen justify-evenly">
           <div className="text-green-100">
             <h2 className="text-3xl mb-3 font-bold">Kelia Iradukunda</h2>
             <h3 className="text-2xl mb-4 font-semibold">Full Stack Engineer</h3>
@@ -131,7 +133,7 @@ const App = () => {
             ))}
           </div>
         </div>
-        <div className="w-full flex flex-col gap-12">
+        <div className="w-full flex flex-col gap-12 overflow-y-auto">
           <div className="">
             <p className="text-green-100 max-w-xl">
               I’m a developer passionate about crafting accessible,
@@ -190,7 +192,7 @@ const App = () => {
                     <p className="text-[16px] leading-relaxed mb-2 text-green-100">{description}</p>
                     <div className="flex gap-1.5">
                       {techstack.map((tech, i) => (
-                        <div key={i} className="rounded-xl p-1 bg-amber-100">
+                        <div key={i} className="rounded-xl px-4 py-0.5 bg-amber-100">
                           <p className="text-amber-300">{tech}</p>
                         </div>
                       ))}
@@ -199,6 +201,22 @@ const App = () => {
                 </div>
               )
             )}
+          </div>
+          <div className="">
+            <h2 className="font-[Lora] text-3xl text-green-200 font-bold mb-4">Get In Touch</h2>
+            <div className="w-30 h-[2px] bg-amber-300 text-amber-300"></div>
+            <p className="text-green-200 mt-5 font-semibold">Have a sweet project in mind or just saying hello! <br /> Feel free to send a message!</p>
+            <div className="flex flex-col space-y-4 text-green-200 font-bold text-lg mt-7">
+              <label htmlFor="name" className="">NAME</label>
+              <input type="text" name="name" className="rounded bg-gray-100 opacity-30 text-white w-96 py-1"/>
+              <label htmlFor="email" className="">EMAIL</label>
+              <input type="text" name="name" placeholder="Enter your name" className="rounded bg-amber-500 opacity-30 text-white w-96 py-1"/>
+              <label htmlFor="subject" className="">SUBJECT</label>
+              <input type="text" name="name" placeholder="Enter your name"/>
+              <label htmlFor="message" className="">MESSAGE</label>
+              <input type="text" name="name" placeholder="Enter your name"/>
+            </div>
+            <button className="border-1 border-amber-300 text-amber-300 font-bold text-lg p-2 mt-6">SEND MESSAGE</button>
           </div>
         </div>
       </div>
