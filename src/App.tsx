@@ -99,24 +99,24 @@ const App = () => {
           <div className="text-green-100">
             <h2 className="text-3xl mb-3 font-bold">Kelia Iradukunda</h2>
             <h3 className="text-2xl mb-4 font-semibold">Full Stack Engineer</h3>
-            <p className="font-light">
+            <p className="font-light text-base">
               I build responsive and eye-catching designs for websites
             </p>
           </div>
           <div className="flex flex-col gap-2 text-green-100">
             <div className="flex items-center gap-2">
               <span className="w-6 h-[2px] bg-green-100"></span>
-              <p>ABOUT</p>
+              <p className="text-base">ABOUT</p>
             </div>
 
             <div className="flex items-center gap-2">
               <span className="w-6 h-[2px] bg-green-100"></span>
-              <p>EXPERIENCE</p>
+              <p className="text-base">EXPERIENCE</p>
             </div>
 
             <div className="flex items-center gap-2">
               <span className="w-6 h-[2px] bg-green-100"></span>
-              <p>PROJECTS</p>
+              <p className="text-base">PROJECTS</p>
             </div>
           </div>
           <div className="flex flex-row gap-3 text-green-100">
@@ -135,7 +135,7 @@ const App = () => {
         </div>
         <div className="w-full flex flex-col gap-12 overflow-y-auto">
           <div className="">
-            <p className="text-green-100 max-w-xl">
+            <p className="text-green-100 max-w-xl text-base leading-relaxed">
               I’m a developer passionate about crafting accessible,
               pixel-perfect user interfaces that blend thoughtful design with
               robust engineering. My favorite work lies at the intersection of
@@ -152,21 +152,22 @@ const App = () => {
           <div className="flex flex-col gap-4 text-green-100">
             {experienceDetails.map(
               ({ year, Title, description, skills }, idx) => (
-                <div key={idx} className="flex gap-3 p-4">
+                <div key={idx} className="flex gap-3 p-4 bg-white/10 backdrop-blur-md rounded-lg shadow-md border border-white/20
+">
                   <div>
-                    <p className="font-light text-sm text-green-50">{year}</p>
+                    <p className="font-light text-base text-green-50">{year}</p>
                   </div>
                   <div className="p-2">
                     <h4 className="font-semibold text-green-200 text-xl mb-2">
                       {Title}
                     </h4>
-                    <p className="text-[16px] leading-relaxed mb-2">
+                    <p className="text-[16px] leading-relaxed mb-2 text-base">
                       {description}
                     </p>
                     <div className="flex gap-1.5">
                       {skills.map((skill, i) => (
-                        <div key={i} className="rounded-xl p-1 bg-amber-100">
-                          <p className="text-amber-300">{skill}</p>
+                        <div key={i} className="rounded-xl p-1 bg-amber-100/20 backdrop-blur-md shadow">
+                          <p className="text-amber-300 text-base">{skill}</p>
                         </div>
                       ))}
                     </div>
@@ -175,25 +176,25 @@ const App = () => {
               )
             )}
             <a href="https://docs.google.com/document/d/1P_3yd3WE8X4SGxZKrKgrRr1gpx4ABflcxzILprLughA/edit?tab=t.0">
-              <p className="font-semibold  text-green-100">View full resume</p>
+              <p className="font-semibold text-base text-green-100">View full resume</p>
             </a>
           </div>
           <div className="flex flex-col gap-12">
             {projectDetails.map(
               ({ img, title, alt, description, techstack }, idx) => (
-                <div key={idx} className="flex gap-4">
+                <div key={idx} className="flex gap-4 p-4 bg-white/10 backdrop-blur-md rounded-lg shadow-md border border-white/20">
                   <div>
                     <img src={img} alt={alt} className="h-20 w-20" />
                   </div>
                   <div className="">
-                    <h3 className="font-semibold text-green-200 text-xl mb-2">
+                    <h3 className="font-semibold text-green-200 text-2xl mb-2">
                       {title}
                     </h3>
-                    <p className="text-[16px] leading-relaxed mb-2 text-green-100">{description}</p>
+                    <p className="text-[16px] leading-relaxed mb-2 text-green-100 text-base">{description}</p>
                     <div className="flex gap-1.5">
                       {techstack.map((tech, i) => (
-                        <div key={i} className="rounded-xl px-4 py-0.5 bg-amber-100">
-                          <p className="text-amber-300">{tech}</p>
+                        <div key={i} className="rounded-xl px-4 py-0.5 bg-amber-100/20 backdrop-blur-md">
+                          <p className="text-amber-300 text-base">{tech}</p>
                         </div>
                       ))}
                     </div>
@@ -205,7 +206,7 @@ const App = () => {
           <div className="">
             <h2 className="font-[Lora] text-3xl text-green-200 font-bold mb-4">Get In Touch</h2>
             <div className="w-30 h-[2px] bg-amber-300 text-amber-300"></div>
-            <p className="text-green-200 mt-5 font-semibold">Have a sweet project in mind or just saying hello! <br /> Feel free to send a message!</p>
+            <p className="text-green-200 mt-5 font-semibold text-base">Have a sweet project in mind or just saying hello! <br /> Feel free to send a message!</p>
             <div className="flex flex-col space-y-4 text-green-200 font-bold text-lg mt-7">
               <label htmlFor="name" className="">NAME</label>
               <input type="text" name="name" className="rounded bg-gray-100 opacity-30 text-white w-96 py-1"/>
@@ -216,7 +217,7 @@ const App = () => {
               <label htmlFor="message" className="">MESSAGE</label>
               <input type="text" name="name" placeholder="Enter your name"/>
             </div>
-            <button className="border-1 border-amber-300 text-amber-300 font-bold text-lg p-2 mt-6">SEND MESSAGE</button>
+            <button className="border-1 border-amber-300 text-amber-300 font-bold text-lg p-2 mt-6 hover:bg-amber-300/80 hover:text-purple-900">SEND MESSAGE</button>
           </div>
         </div>
       </div>
