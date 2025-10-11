@@ -1,5 +1,6 @@
 import { FaDiscord, FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 import CursorLight from "./components/CursorLight";
+import { useState } from "react";
 
 const App = () => {
   const socialIcons = [
@@ -91,6 +92,21 @@ const App = () => {
     },
   ];
 
+  const [name, setName] = useState("");
+  const [response, setResponse] = useState("");
+
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
+    e.preventDefault();
+    const res = await fetch("http://localhost:3000/hello", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ name }),
+    });
+
+    const data = await res.json();
+    setResponse(data);
+  };
+
   return (
     <div className=" font-[sans-serif] relative bg-[#37055a] flex items-center justify-center">
       <CursorLight />
@@ -152,8 +168,11 @@ const App = () => {
           <div className="flex flex-col gap-4 text-green-100">
             {experienceDetails.map(
               ({ year, Title, description, skills }, idx) => (
-                <div key={idx} className="flex gap-3 p-4 bg-white/10 backdrop-blur-md rounded-lg shadow-md border border-white/20
-">
+                <div
+                  key={idx}
+                  className="flex gap-3 p-4 bg-white/10 backdrop-blur-md rounded-lg shadow-md border border-white/20
+"
+                >
                   <div>
                     <p className="font-light text-base text-green-50">{year}</p>
                   </div>
@@ -166,7 +185,10 @@ const App = () => {
                     </p>
                     <div className="flex gap-1.5">
                       {skills.map((skill, i) => (
-                        <div key={i} className="rounded-xl p-1 bg-amber-100/20 backdrop-blur-md shadow">
+                        <div
+                          key={i}
+                          className="rounded-xl p-1 bg-amber-100/20 backdrop-blur-md shadow"
+                        >
                           <p className="text-amber-300 text-base">{skill}</p>
                         </div>
                       ))}
@@ -176,13 +198,18 @@ const App = () => {
               )
             )}
             <a href="https://docs.google.com/document/d/1P_3yd3WE8X4SGxZKrKgrRr1gpx4ABflcxzILprLughA/edit?tab=t.0">
-              <p className="font-semibold text-base text-green-100">View full resume</p>
+              <p className="font-semibold text-base text-green-100">
+                View full resume
+              </p>
             </a>
           </div>
           <div className="flex flex-col gap-12">
             {projectDetails.map(
               ({ img, title, alt, description, techstack }, idx) => (
-                <div key={idx} className="flex gap-4 p-4 bg-white/10 backdrop-blur-md rounded-lg shadow-md border border-white/20">
+                <div
+                  key={idx}
+                  className="flex gap-4 p-4 bg-white/10 backdrop-blur-md rounded-lg shadow-md border border-white/20"
+                >
                   <div>
                     <img src={img} alt={alt} className="h-20 w-20" />
                   </div>
@@ -190,10 +217,15 @@ const App = () => {
                     <h3 className="font-semibold text-green-200 text-2xl mb-2">
                       {title}
                     </h3>
-                    <p className="text-[16px] leading-relaxed mb-2 text-green-100 text-base">{description}</p>
+                    <p className="text-[16px] leading-relaxed mb-2 text-green-100 text-base">
+                      {description}
+                    </p>
                     <div className="flex gap-1.5">
                       {techstack.map((tech, i) => (
-                        <div key={i} className="rounded-xl px-4 py-0.5 bg-amber-100/20 backdrop-blur-md">
+                        <div
+                          key={i}
+                          className="rounded-xl px-4 py-0.5 bg-amber-100/20 backdrop-blur-md"
+                        >
                           <p className="text-amber-300 text-base">{tech}</p>
                         </div>
                       ))}
@@ -204,20 +236,50 @@ const App = () => {
             )}
           </div>
           <div className="">
-            <h2 className="font-[Lora] text-3xl text-green-200 font-bold mb-4">Get In Touch</h2>
+            <h2 className="font-[Lora] text-3xl text-green-200 font-bold mb-4">
+              Get In Touch
+            </h2>
             <div className="w-30 h-[2px] bg-amber-300 text-amber-300"></div>
-            <p className="text-green-200 mt-5 font-semibold text-base">Have a sweet project in mind or just saying hello! <br /> Feel free to send a message!</p>
+            <p className="text-green-200 mt-5 font-semibold text-base">
+              Have a sweet project in mind or just saying hello! <br /> Feel
+              free to send a message!
+            </p>
             <div className="flex flex-col space-y-4 text-green-200 font-bold text-lg mt-7">
-              <label htmlFor="name" className="">NAME</label>
-              <input type="text" name="name" className="rounded bg-gray-100 opacity-30 text-white w-96 py-1"/>
-              <label htmlFor="email" className="">EMAIL</label>
-              <input type="text" name="name" placeholder="Enter your name" className="rounded bg-amber-500 opacity-30 text-white w-96 py-1"/>
-              <label htmlFor="subject" className="">SUBJECT</label>
-              <input type="text" name="name" placeholder="Enter your name"/>
-              <label htmlFor="message" className="">MESSAGE</label>
-              <input type="text" name="name" placeholder="Enter your name"/>
+              <label htmlFor="name" className="">
+                NAME
+              </label>
+              <input
+                type="text"
+                name="name"
+                className="rounded bg-gray-100 opacity-30 text-white w-96 py-1"
+                onChange={(e) => setName(e.target.value)}
+              />
+              <label htmlFor="email" className="">
+                EMAIL
+              </label>
+              <input
+                type="text"
+                name="name"
+                placeholder="Enter your name"
+                className="rounded bg-amber-500 opacity-30 text-white w-96 py-1"
+              />
+              <label htmlFor="subject" className="">
+                SUBJECT
+              </label>
+              <input type="text" name="name" placeholder="Enter your name" />
+              <label htmlFor="message" className="">
+                MESSAGE
+              </label>
+              <input type="text" name="name" placeholder="Enter your name" />
             </div>
-            <button className="border-1 border-amber-300 text-amber-300 font-bold text-lg p-2 mt-6 hover:bg-amber-300/80 hover:text-purple-900">SEND MESSAGE</button>
+            <button
+              className="border-1 border-amber-300 text-amber-300 font-bold text-lg p-2 mt-6 hover:bg-amber-300/80 hover:text-purple-900"
+              onClick={handleSubmit}
+            >
+              SEND MESSAGE
+            </button>
+
+            {response && <p className="text-base text-amber-300">{response}</p>}
           </div>
         </div>
       </div>
