@@ -1,6 +1,7 @@
 import { FaDiscord, FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 import CursorLight from "./components/CursorLight";
-import { useState } from "react";
+import { Contact } from "./pages/Contact";
+import { useEffect } from "react";
 
 const App = () => {
   const socialIcons = [
@@ -92,20 +93,11 @@ const App = () => {
     },
   ];
 
-  const [name, setName] = useState("");
-  const [response, setResponse] = useState("");
-
-  const handleSubmit = async (e: { preventDefault: () => void; }) => {
-    e.preventDefault();
-    const res = await fetch("http://localhost:3000/hello", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({ name }),
-    });
-
-    const data = await res.json();
-    setResponse(data);
-  };
+  useEffect(() => {
+    fetch("http://localhost:3000/")
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  }, []);
 
   return (
     <div className=" font-[sans-serif] relative bg-[#37055a] flex items-center justify-center">
@@ -170,8 +162,7 @@ const App = () => {
               ({ year, Title, description, skills }, idx) => (
                 <div
                   key={idx}
-                  className="flex gap-3 p-4 bg-white/10 backdrop-blur-md rounded-lg shadow-md border border-white/20
-"
+                  className="flex gap-3 p-4 bg-white/10 backdrop-blur-md rounded-lg shadow-md border border-white/20"
                 >
                   <div>
                     <p className="font-light text-base text-green-50">{year}</p>
@@ -235,52 +226,7 @@ const App = () => {
               )
             )}
           </div>
-          <div className="">
-            <h2 className="font-[Lora] text-3xl text-green-200 font-bold mb-4">
-              Get In Touch
-            </h2>
-            <div className="w-30 h-[2px] bg-amber-300 text-amber-300"></div>
-            <p className="text-green-200 mt-5 font-semibold text-base">
-              Have a sweet project in mind or just saying hello! <br /> Feel
-              free to send a message!
-            </p>
-            <div className="flex flex-col space-y-4 text-green-200 font-bold text-lg mt-7">
-              <label htmlFor="name" className="">
-                NAME
-              </label>
-              <input
-                type="text"
-                name="name"
-                className="rounded bg-gray-100 opacity-30 text-white w-96 py-1"
-                onChange={(e) => setName(e.target.value)}
-              />
-              <label htmlFor="email" className="">
-                EMAIL
-              </label>
-              <input
-                type="text"
-                name="name"
-                placeholder="Enter your name"
-                className="rounded bg-amber-500 opacity-30 text-white w-96 py-1"
-              />
-              <label htmlFor="subject" className="">
-                SUBJECT
-              </label>
-              <input type="text" name="name" placeholder="Enter your name" />
-              <label htmlFor="message" className="">
-                MESSAGE
-              </label>
-              <input type="text" name="name" placeholder="Enter your name" />
-            </div>
-            <button
-              className="border-1 border-amber-300 text-amber-300 font-bold text-lg p-2 mt-6 hover:bg-amber-300/80 hover:text-purple-900"
-              onClick={handleSubmit}
-            >
-              SEND MESSAGE
-            </button>
-
-            {response && <p className="text-base text-amber-300">{response}</p>}
-          </div>
+          <Contact />
         </div>
       </div>
     </div>

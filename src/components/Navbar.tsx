@@ -1,6 +1,5 @@
-import React from 'react'
+
 import { FaHome } from 'react-icons/fa'
-import { FcAbout } from 'react-icons/fc'
 import { GiSkills } from 'react-icons/gi'
 import { MdContacts } from 'react-icons/md'
 
