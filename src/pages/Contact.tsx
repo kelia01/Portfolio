@@ -1,5 +1,8 @@
   import { useState } from "react";
 
+  
+  
+export const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
@@ -23,8 +26,6 @@
     }
   };
 
-
-export const Contact = () => {
   return (
     <div className="">
             <h2 className="font-[Lora] text-3xl text-green-200 font-bold mb-4">

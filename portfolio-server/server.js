@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
 import nodemailer from 'nodemailer';
@@ -6,23 +7,21 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.get('/', (req, res) => {
-    res.json({ message: 'hello from the backend'})
-})
-
 app.post('/contact', async (req, res) => {
     const {name, email, subject, message } = req.body;
     const transporter = nodemailer.createTransport({
-        service: 'gmail',
+        host: 'smtp.gmail.com',
+        secure:true,
         auth:{
-            user: 'irakel320@gmail',
-            pass: 'pjag vevt kqrd ovyb',
+            user: process.env.user,
+            pass: process.env.pass,
         },
+         tls: { rejectUnauthorized: false }
     });
     
     const mailOptions = {
-        from: gmail,
-        to: 'irakel320@gmail',
+        from: process.env.user,
+        to: process.env.user,
         subject: `Got new message: ${subject}`,
         text: `Name: ${name}\n email: ${email}\n message: ${message}`,
     };
