@@ -26,54 +26,50 @@ export const Contact = () => {
     }
   };
 
-  return (
-    <div className="">
-            <h2 className="font-[Lora] text-3xl text-green-200 font-bold mb-4">
-              Get In Touch
-            </h2>
-            <div className="w-30 h-[2px] bg-amber-300 text-amber-300"></div>
-            <p className="text-green-200 mt-5 font-semibold text-base">
-              Have a sweet project in mind or just saying hello! <br /> Feel
-              free to send a message!
-            </p>
-            <div className="flex flex-col space-y-4 text-green-200 font-bold text-lg mt-7">
-              <label htmlFor="name" className="">
-                NAME
-              </label>
-              <input
-                type="text"
-                name="name"
-                className="rounded bg-gray-100 opacity-30 text-white w-96 py-1"
-                onChange={(e) => setName(e.target.value)}
-              />
-              <label htmlFor="email" className="">
-                EMAIL
-              </label>
-              <input
-                type="text"
-                name="email"
-                placeholder="Enter your email"
-                className="rounded bg-amber-500 opacity-30 text-white w-96 py-1"
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <label htmlFor="subject" className="">
-                SUBJECT
-              </label>
-              <input type="text" name="subject" placeholder="Enter your subject" 
-              onChange={(e) => setSubject(e.target.value)}/>
-              <label htmlFor="message" className="">
-                MESSAGE
-              </label>
-              <textarea name="" maxLength={60} onChange={(e) => setMessage(e.target.value)}></textarea>
-            </div>
-            <button
-              className="border-1 border-amber-300 text-amber-300 font-bold text-lg p-2 mt-6 hover:bg-amber-300/80 hover:text-purple-900"
-              onClick={handleSubmit}
-            >
-              SEND MESSAGE
-            </button>
+  const inputClass = "w-full rounded-lg border border-white/10 bg-[#243352] px-4 py-2.5 text-[#f0ece4] placeholder-[#6b6358] outline-none focus:border-[#C9A87C]/60 transition";
 
-            {response && <p className="text-base text-amber-300">{response}</p>}
-          </div>
+  return (
+    <div>
+      <div className="mb-8 flex items-center gap-4">
+        <span className="text-xs font-semibold tracking-[0.2em] text-[#C9A87C]">05</span>
+        <div className="h-px w-10 bg-[#C9A87C]/50" />
+        <h2 className="text-xl font-bold tracking-tight text-[#f0ece4]">Get In Touch</h2>
+      </div>
+
+      <p className="mb-8 max-w-md leading-7 text-[#b8b0a0]">
+        Have a project in mind or just saying hello? Feel free to send a message!
+      </p>
+
+      <form onSubmit={handleSubmit} className="flex flex-col gap-5 max-w-lg">
+        <div className="flex flex-col gap-1.5">
+          <label className="text-xs font-semibold tracking-wider text-[#C9A87C]">NAME</label>
+          <input type="text" name="name" className={inputClass} onChange={(e) => setName(e.target.value)} />
+        </div>
+
+        <div className="flex flex-col gap-1.5">
+          <label className="text-xs font-semibold tracking-wider text-[#C9A87C]">EMAIL</label>
+          <input type="email" name="email" placeholder="your@email.com" className={inputClass} onChange={(e) => setEmail(e.target.value)} />
+        </div>
+
+        <div className="flex flex-col gap-1.5">
+          <label className="text-xs font-semibold tracking-wider text-[#C9A87C]">SUBJECT</label>
+          <input type="text" name="subject" className={inputClass} onChange={(e) => setSubject(e.target.value)} />
+        </div>
+
+        <div className="flex flex-col gap-1.5">
+          <label className="text-xs font-semibold tracking-wider text-[#C9A87C]">MESSAGE</label>
+          <textarea name="message" rows={5} maxLength={500} className={`${inputClass} resize-none`} onChange={(e) => setMessage(e.target.value)} />
+        </div>
+
+        <button
+          type="submit"
+          className="w-fit rounded-lg bg-[#C0522A] px-6 py-2.5 text-sm font-semibold text-[#f0ece4] transition hover:bg-[#d4623a]"
+        >
+          SEND MESSAGE
+        </button>
+
+        {response && <p className="text-sm text-[#C9A87C]">{response}</p>}
+      </form>
+    </div>
   )
 }
