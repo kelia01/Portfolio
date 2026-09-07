@@ -65,24 +65,7 @@ const App = () => {
       ],
     },
     {
-      year: "2024 - FEB 2026",
-      title: "Software Development Trainee",
-      organization: "The Gym",
-      description:
-        "Completed intensive software development training with hands-on experience building full-stack applications, collaborating on team projects, and developing practical software engineering skills.",
-      skills: [
-        "JavaScript",
-        "TypeScript",
-        "React",
-        "Node.js",
-        "NestJS",
-        "PostgreSQL",
-        "MongoDB",
-        "Git",
-      ],
-    },
-    {
-      year: "2025 - PRESENT",
+      year: "MAR 2025 - PRESENT",
       title: "Software Development Coach",
       organization: "The Gym",
       description:
@@ -96,6 +79,23 @@ const App = () => {
         "Codewars",
         "Trello",
         "Toggl",
+      ],
+    },
+    {
+      year: "NOV 2024 - FEB 2026",
+      title: "Software Development Trainee",
+      organization: "The Gym",
+      description:
+        "Completed intensive software development training with hands-on experience building full-stack applications, collaborating on team projects, and developing practical software engineering skills.",
+      skills: [
+        "JavaScript",
+        "TypeScript",
+        "React",
+        "Node.js",
+        "NestJS",
+        "PostgreSQL",
+        "MongoDB",
+        "Git",
       ],
     },
   ];
